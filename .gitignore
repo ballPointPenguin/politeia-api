@@ -1,6 +1,8 @@
+*.env
+!example.env
 .idea/
 .vscode/
-node_modules/
 build/
-tmp/
+node_modules/
 temp/
+tmp/
