@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
 dotenv.config({
   path:
@@ -7,7 +7,7 @@ dotenv.config({
       : process.env.POLIS_ENV === 'preprod'
         ? 'preprod.env'
         : '.env'
-});
+})
 
 export default {
   dbDatabase: process.env.DB_DATABASE || 'politeia-dev',
@@ -17,4 +17,4 @@ export default {
   dbPort: parseInt(process.env.DB_PORT || '5432', 10),
   dbSynchronize: process.env.NODE_ENV !== 'production',
   dbUsername: process.env.DB_USERNAME || 'postgres'
-};
+}
