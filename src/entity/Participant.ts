@@ -3,16 +3,16 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 @Entity()
 export class Participant {
   @PrimaryGeneratedColumn({ name: 'pid' })
-  pid: number
+  pid!: number
 
   @Column({ name: 'uid', type: 'integer', nullable: false })
-  uid: number
+  uid!: number
 
   @Column({ name: 'zid', type: 'integer', nullable: false })
-  zid: number
+  zid!: number
 
   @Column({ name: 'vote_count', type: 'integer', default: 0, nullable: false })
-  voteCount: number
+  voteCount!: number
 
   @Column({
     name: 'last_interaction',
@@ -20,19 +20,19 @@ export class Participant {
     default: 0,
     nullable: false
   })
-  lastInteraction: number
+  lastInteraction!: number
 
   @Column({ name: 'subscribed', type: 'integer', default: 0, nullable: false })
-  subscribed: number
+  subscribed!: number
 
   @Column({ name: 'last_notified', type: 'bigint', default: 0, nullable: true })
-  lastNotified: number
+  lastNotified!: number
 
   @Column({ name: 'nsli', type: 'smallint', default: 0, nullable: false })
-  nsli: number
+  nsli!: number
 
   @Column({ name: 'mod', type: 'integer', default: 0, nullable: false })
-  mod: number
+  mod!: number
 
   @Column({
     name: 'created',
@@ -40,5 +40,5 @@ export class Participant {
     default: () => 'now_as_millis()',
     nullable: true
   })
-  created: number
+  created!: number
 }

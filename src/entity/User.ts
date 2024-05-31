@@ -3,10 +3,10 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 @Entity()
 export class User {
   @PrimaryGeneratedColumn({ name: 'uid' })
-  uid: number
+  uid!: number
 
   @Column({ name: 'hname', type: 'varchar', length: 746, nullable: true })
-  hname: string
+  hname!: string
 
   @Column({
     name: 'created',
@@ -14,25 +14,25 @@ export class User {
     default: () => 'now_as_millis()',
     nullable: true
   })
-  created: number
+  created!: number
 
   @Column({ name: 'username', type: 'varchar', length: 128, nullable: true })
-  username: string
+  username!: string
 
   @Column({ name: 'email', type: 'varchar', length: 256, nullable: true })
-  email: string
+  email!: string
 
   @Column({ name: 'is_owner', type: 'boolean', default: false, nullable: true })
-  isOwner: boolean
+  isOwner!: boolean
 
   @Column({ name: 'zinvite', type: 'varchar', length: 300, nullable: true })
-  zinvite: string
+  zinvite!: string
 
   @Column({ name: 'oinvite', type: 'varchar', length: 300, nullable: true })
-  oinvite: string
+  oinvite!: string
 
   @Column({ name: 'tut', type: 'smallint', default: 0, nullable: true })
-  tut: number
+  tut!: number
 
   @Column({
     name: 'site_id',
@@ -41,7 +41,7 @@ export class User {
     default: () => 'random_polis_site_id()',
     nullable: false
   })
-  siteId: string
+  siteId!: string
 
   @Column({
     name: 'site_owner',
@@ -49,5 +49,5 @@ export class User {
     default: true,
     nullable: false
   })
-  siteOwner: boolean
+  siteOwner!: boolean
 }
