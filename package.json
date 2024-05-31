@@ -3,7 +3,6 @@
   "description": "TypeORM powered backend admin app for polis",
   "private": true,
   "version": "0.0.1",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write .",
