@@ -13,7 +13,8 @@ export const startServer = async () => {
   // Register CORS
   await app.register(cors, {
     origin: env.clientOrigin,
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
   })
 
   // Register cookie

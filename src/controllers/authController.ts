@@ -41,3 +41,17 @@ export const handleLogout = async (
 
   return reply.send({ message: 'Logged out successfully' })
 }
+
+export const handleVerify = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  const user = request.session.user
+
+  // TODO - Integrate AuthMiddleware prehandler into this route
+  if (!user) {
+    return reply.status(401).send({ message: 'Unauthorized' })
+  }
+
+  return reply.send({ message: 'Verified', user })
+}
