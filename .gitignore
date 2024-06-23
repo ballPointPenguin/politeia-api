@@ -1,5 +1,4 @@
 *.env
-!example.env
 .idea/
 .vscode/
 build/
