@@ -1,13 +1,23 @@
 import type { FastifyListenOptions } from 'fastify'
 import { AppDataSource } from './config/database'
-import fastify from 'fastify'
+import cors from '@fastify/cors'
 import env from './env'
-import userRoutes from './routes/userRoutes'
+import fastify from 'fastify'
+import routes from './routes'
+
+console.log('env', env)
 
 export const startServer = async () => {
   const app = fastify({ logger: env.appLogging })
 
-  await app.register(userRoutes, { prefix: '/users' })
+  // Register CORS
+  await app.register(cors, {
+    origin: env.clientOrigin,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  })
+
+  // Register routes
+  await app.register(routes, { prefix: '/api' })
 
   const listenOptions: FastifyListenOptions = {
     host: env.appHost,

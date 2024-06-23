@@ -29,10 +29,11 @@ function asInteger(value: string | undefined): number | undefined {
 
 // TODO - Allow for more nuanced appLogging and dbLogging configurations.
 
-export default {
+const env: AppEnv = {
   appHost: process.env.APP_HOST,
   appLogging: asBoolean(process.env.APP_LOGGING),
   appPort: asInteger(process.env.APP_PORT),
+  clientOrigin: process.env.CLIENT_ORIGIN,
   dbDatabase: process.env.DB_DATABASE,
   dbHost: process.env.DB_HOST,
   dbLogging: asBoolean(process.env.DB_LOGGING),
@@ -40,4 +41,6 @@ export default {
   dbPort: asInteger(process.env.DB_PORT),
   dbUsername: process.env.DB_USERNAME,
   googleClientId: process.env.GOOGLE_CLIENT_ID
-} as AppEnv
+}
+
+export default env
