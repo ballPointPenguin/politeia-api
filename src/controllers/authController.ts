@@ -1,4 +1,5 @@
 import type { FastifyRequest, FastifyReply } from 'fastify'
+import type { TokenPayload } from 'google-auth-library'
 import { verifyGoogleToken } from '../auth/google'
 
 export const handleGoogleAuth = async (
@@ -9,6 +10,15 @@ export const handleGoogleAuth = async (
 
   try {
     const userData = await verifyGoogleToken(token)
+
+    const { email, name, sub } = userData as TokenPayload
+
+    request.session.user = {
+      email,
+      name,
+      sub
+    }
+
     return reply.send({ message: 'Authentication successful', user: userData })
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unknown error'
@@ -17,4 +27,17 @@ export const handleGoogleAuth = async (
       .status(401)
       .send({ message: 'Authentication failed', error: message })
   }
+}
+
+export const handleLogout = async (
+  request: FastifyRequest,
+  reply: FastifyReply
+) => {
+  try {
+    await request.session.destroy()
+  } catch (error) {
+    return reply.status(500).send({ message: 'Logout failed' })
+  }
+
+  return reply.send({ message: 'Logged out successfully' })
 }

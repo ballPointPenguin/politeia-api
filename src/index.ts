@@ -3,9 +3,9 @@ import { AppDataSource } from './config/database'
 import cors from '@fastify/cors'
 import env from './env'
 import fastify from 'fastify'
+import fastifyCookie from '@fastify/cookie'
+import fastifySession from '@fastify/session'
 import routes from './routes'
-
-console.log('env', env)
 
 export const startServer = async () => {
   const app = fastify({ logger: env.appLogging })
@@ -14,6 +14,18 @@ export const startServer = async () => {
   await app.register(cors, {
     origin: env.clientOrigin,
     methods: ['GET', 'POST', 'PUT', 'DELETE']
+  })
+
+  // Register cookie
+  await app.register(fastifyCookie)
+
+  // Register session
+  await app.register(fastifySession, {
+    secret: env.sessionSecret,
+    cookie: {
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in ms
+      secure: 'auto' // true for HTTPS, false for HTTP
+    }
   })
 
   // Register routes
