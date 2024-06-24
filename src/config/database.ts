@@ -15,6 +15,8 @@ const options: PostgresConnectionOptions = {
   database: env.dbDatabase,
   synchronize: false,
   logging: env.dbLogging,
+  logNotifications: env.dbLogging,
+  ssl: env.dbSSL ? { rejectUnauthorized: false } : false,
   entities: [User]
 }
 

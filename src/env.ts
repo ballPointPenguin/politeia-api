@@ -27,6 +27,7 @@ const env: AppEnv = {
   dbLogging: asBoolean(process.env.DB_LOGGING),
   dbPassword: asString(process.env.DB_PASSWORD),
   dbPort: asInteger(process.env.DB_PORT),
+  dbSSL: asBoolean(process.env.DB_SSL),
   dbUsername: asString(process.env.DB_USERNAME),
   googleClientId: asString(process.env.GOOGLE_CLIENT_ID),
   sessionSecret: asString(process.env.SESSION_SECRET)

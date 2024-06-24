@@ -6,10 +6,6 @@ export const listUsers = async (
   request: FastifyRequest,
   reply: FastifyReply
 ) => {
-  if (!request.session.user) {
-    return reply.status(401).send({ message: 'Unauthorized' })
-  }
-
   const userRepo = AppDataSource.getRepository(User)
   const users = await userRepo.find()
 
@@ -17,10 +13,6 @@ export const listUsers = async (
 }
 
 export const getUser = async (request: FastifyRequest, reply: FastifyReply) => {
-  if (!request.session.user) {
-    return reply.status(401).send({ message: 'Unauthorized' })
-  }
-
   const userRepo = AppDataSource.getRepository(User)
   const { uid } = request.params as { uid: string }
 

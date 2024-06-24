@@ -8,6 +8,7 @@ export type AppEnv = {
   dbLogging: boolean
   dbPassword: string
   dbPort: number
+  dbSSL: boolean
   dbUsername: string
   googleClientId: string
   sessionSecret: string
