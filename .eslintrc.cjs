@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  env: { node: true, es2020: true },
+  env: { node: true, es2022: true },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -10,7 +10,7 @@ module.exports = {
   ignorePatterns: ['bin', 'build', 'node_modules', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2022,
     sourceType: 'module',
     project: './tsconfig.json'
   },
