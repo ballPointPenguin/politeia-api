@@ -3,6 +3,8 @@ import 'reflect-metadata'
 
 import type { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions'
 import { DataSource } from 'typeorm'
+import { Conversation } from '../entities/Conversation'
+import { Participant } from '../entities/Participant'
 import { User } from '../entities/User'
 import env from '../env'
 
@@ -17,7 +19,7 @@ const options: PostgresConnectionOptions = {
   logging: env.dbLogging,
   logNotifications: env.dbLogging,
   ssl: env.dbSSL ? { rejectUnauthorized: false } : false,
-  entities: [User]
+  entities: [Conversation, Participant, User]
 }
 
 export const AppDataSource = new DataSource(options)

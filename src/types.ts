@@ -20,7 +20,8 @@ export type SessionUser = {
   sub?: string
 }
 
-export type RequestQuery = {
+export interface RequestQuery {
+  cursor?: string
   page?: number
   limit?: number
   sort?: string
