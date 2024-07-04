@@ -19,3 +19,11 @@ export type SessionUser = {
   name?: string
   sub?: string
 }
+
+export type RequestQuery = {
+  page?: number
+  limit?: number
+  sort?: string
+  order?: 'ASC' | 'DESC'
+  [key: string]: string | number | undefined // filters
+}

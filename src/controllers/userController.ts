@@ -1,14 +1,7 @@
 import type { FastifyRequest, FastifyReply } from 'fastify'
+import type { RequestQuery } from '../types'
 import { AppDataSource } from '../config/database'
 import { User } from '../entities/User'
-
-type RequestQuery = {
-  page?: number
-  limit?: number
-  sort?: string
-  order?: 'ASC' | 'DESC'
-  [key: string]: string | number | undefined // filters
-}
 
 export const listUsers = async (
   request: FastifyRequest,

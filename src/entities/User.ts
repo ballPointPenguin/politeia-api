@@ -8,14 +8,6 @@ export class User {
   @Column({ name: 'hname', type: 'varchar', length: 746, nullable: true })
   hname!: string
 
-  @Column({
-    name: 'created',
-    type: 'bigint',
-    default: () => 'now_as_millis()',
-    nullable: true
-  })
-  created!: number
-
   @Column({ name: 'username', type: 'varchar', length: 128, nullable: true })
   username!: string
 
@@ -50,4 +42,12 @@ export class User {
     nullable: false
   })
   siteOwner!: boolean
+
+  @Column({
+    name: 'created',
+    type: 'bigint',
+    default: () => 'now_as_millis()',
+    nullable: true
+  })
+  created!: number
 }
